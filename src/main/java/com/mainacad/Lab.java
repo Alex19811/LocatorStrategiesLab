@@ -9,11 +9,11 @@ import org.openqa.selenium.remote.DriverCommand;
 
 public class Lab
 {
-    public static By info_Massage = By.cssSelector("p:nth-child(3) em" );
-    //public static By info_Massage = By.xpath("")
-    {
+    private static By info_Massage = By.cssSelector("p:nth-child(3) em" );
+
+    public static void main(String[] args){
         //Создаём системную переменную которая содержит путь к драйверу
-        System.setProperty("webdriver.chrome.driver","/drivers/chromedriverWin.exe");
+        System.setProperty("webdriver.chrome.driver","src\\main\\java\\com\\mainacad\\drivers\\chromedriverWin.exe");
 
         //Создаём вебдрайвер
         WebDriver driver = new ChromeDriver();
@@ -53,6 +53,6 @@ public class Lab
         //TODO: Вывести в консоль текст лейбла Text2
 
         //TODO: Закрыть браузер
-
+        driver.close();
     }
 }
