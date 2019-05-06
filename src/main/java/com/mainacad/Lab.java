@@ -1,12 +1,16 @@
 package com.mainacad;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DriverCommand;
 
 
 public class Lab
 {
-    public static void main( String[] args )
+    public static By info_Massage = By.cssSelector("p:nth-child(3) em" );
+    //public static By info_Massage = By.xpath("")
     {
         //Создаём системную переменную которая содержит путь к драйверу
         System.setProperty("webdriver.chrome.driver","/drivers/chromedriverWin.exe");
@@ -18,8 +22,11 @@ public class Lab
         driver.get("https://www.toolsqa.com/automation-practice-form/");
 
         //TODO: Вывести в консоль текст Инфо сообщения
+        WebElement element = driver.findElement(info_Massage);
+        System.out.println(element.getText());
 
         //TODO: Вывести в консоль текст заголовка формы ("Practice Automation Form")
+
 
         //TODO: Кликнуть линк Partial Link Test
 
