@@ -5,36 +5,38 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import sun.nio.cs.ext.MacCentralEurope;
 
 import javax.sound.sampled.Line;
 
-
-public class Lab
-{
-    private static By info_Massage = By.cssSelector("p:nth-child(3) em" );
-    private static By TextForm = By.cssSelector(".page-title-head h1" );
-    private static By Link = By.cssSelector("[href='http\\:\\/\\/toolsqa\\.com\\/automation-practice-form\\/'] strong" );
-    private static By FirstName = By.cssSelector("[name='firstname']" );
-    private static By LastName = By.cssSelector("[name='lastname']" );
-    private static By Sex = By.cssSelector("fieldset .control-group:nth-child(18) [name='sex']:nth-child(2)" );
-    private static By YearsOfExperience = By.cssSelector("fieldset .control-group:nth-child(23) [name='exp']:nth-child(6)" );
-    private static By Date = By.cssSelector("fieldset p:nth-child(26) [type]" );
-    private static By AutomationToolQtp = By.cssSelector("fieldset .control-group:nth-child(40) [name='tool']:nth-child(2)" );
-    private static By AutomationToolSeleniumUde = By.cssSelector("fieldset .control-group:nth-child(40) [name='tool']:nth-child(4)" );
-    private static By NameContinents = By.cssSelector(" fieldset .control-group:nth-child(43) .controls:nth-child(3)" );
-    private static By BrowserCommands = By.cssSelector(" [multiple] option:nth-of-type(1)" );
-    private static By NavigationCommands = By.cssSelector(" [multiple] option:nth-of-type(2)" );
-    private static By Button = By.cssSelector(" [name='submit']" );
-    private static By InfoText1 = By.cssSelector(" .bcd" );
-    private static By InfoText2 = By.cssSelector(" #NextedText" );
+import static org.openqa.selenium.By.id;
 
 
+public class Lab {
+    private static By info_Massage = By.cssSelector("p:nth-child(3) em");
+    private static By TextForm = By.cssSelector(".page-title-head h1");
+    private static By Link = By.cssSelector("[href='http\\:\\/\\/toolsqa\\.com\\/automation-practice-form\\/'] strong");
+    private static By FirstName = By.cssSelector("[name='firstname']");
+    private static By LastName = By.cssSelector("[name='lastname']");
+    private static By Sex = By.cssSelector("fieldset .control-group:nth-child(18) [name='sex']:nth-child(2)");
+    private static By YearsOfExperience = By.cssSelector("fieldset .control-group:nth-child(23) [name='exp']:nth-child(6)");
+    private static By Date = By.cssSelector("fieldset p:nth-child(26) [type]");
+    private static By AutomationToolQtp = By.cssSelector("fieldset .control-group:nth-child(40) [name='tool']:nth-child(2)");
+    private static By AutomationToolSeleniumUde = By.cssSelector("fieldset .control-group:nth-child(40) [name='tool']:nth-child(4)");
+    private static By ElementSpisok = By.cssSelector("[name='continents']");
+
+    private static By BrowserCommands = By.cssSelector(" [multiple] option:nth-of-type(1)");
+    private static By NavigationCommands = By.cssSelector(" [multiple] option:nth-of-type(2)");
+    private static By Button = By.cssSelector(" [name='submit']");
+    private static By InfoText1 = By.cssSelector(" .bcd");
+    private static By InfoText2 = By.cssSelector(" #NextedText");
 
 
-
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //Создаём системную переменную которая содержит путь к драйверу
-        System.setProperty("webdriver.chrome.driver","src\\main\\java\\com\\mainacad\\drivers\\chromedriverWin.exe");
+        System.setProperty("webdriver.chrome.driver", "src\\main\\java\\com\\mainacad\\drivers\\chromedriverWin.exe");
 
         //Создаём вебдрайвер
         WebDriver driver = new ChromeDriver();
@@ -82,8 +84,10 @@ public class Lab
 
 
         //TODO: Выбрать континент из выпадающего списка
-        WebElement elementNameContinents = driver.findElement(NameContinents);
-        elementNameContinents.click();
+
+        WebElement elementSpisok = driver.findElement(ElementSpisok);
+        Select sel = new Select(elementSpisok);
+        sel.selectByVisibleText("Australia");
 
         //TODO: Выбрать несколько вариантов из списка Selenium Commands
         WebElement elementBrowserCommands = driver.findElement(BrowserCommands);
@@ -104,7 +108,14 @@ public class Lab
         WebElement elementText2 = driver.findElement(InfoText2);
         System.out.println(elementText2.getText());
 
+        //TODO: Выбрать континент из выпадающего списка
+
+        WebElement elementSpisok = driver.findElement(ElementSpisok);
+        Select sel = new Select(elementSpisok);
+        sel.selectByVisibleText("Australia");
+
+
         //TODO: Закрыть браузер
-        driver.close();
+        //driver.close();
     }
 }
